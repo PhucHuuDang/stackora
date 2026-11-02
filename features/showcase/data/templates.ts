@@ -175,74 +175,6 @@ export const TEMPLATES: Template[] = [
     ],
   },
   {
-    id: "thaifruitz",
-    date: "2025-04-10T00:00:00.000Z",
-    dateText: "Apr 10, 2025",
-    hasPro: false,
-    title: "ThaiFruitz",
-    headingSvg: HEADING_SPARKLE,
-    desc: "A production-ready e-commerce platform built with modern frontend architecture. Features responsive product listings, detail views, Zustand state caching, and Cloudinary media optimization.",
-    img: "/templates/thaifruitz.webp",
-    width: 1600,
-    height: 1006,
-    links: [
-      {
-        html: '<a target="_blank" rel="noopener noreferrer" href="https://thaifruitz.vercel.app">Live Demo</a>',
-        text: "Live Demo",
-        links: [
-          {
-            text: "Live Demo",
-            href: "https://thaifruitz.vercel.app",
-          },
-        ],
-      },
-      {
-        html: '<a target="_blank" rel="noopener noreferrer" href="https://github.com/PhucHuuDang/thaifruitz">GitHub Repository</a>',
-        text: "GitHub Repository",
-        links: [
-          {
-            text: "GitHub Repository",
-            href: "https://github.com/PhucHuuDang/thaifruitz",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "moimoc",
-    date: "2024-10-20T00:00:00.000Z",
-    dateText: "Oct 20, 2024",
-    hasPro: false,
-    title: "MoiMoc",
-    headingSvg: HEADING_SPARKLE,
-    desc: "A real-world e-commerce website developed for a local brand, covering both frontend and backend. Combines Next.js responsive storefront, NestJS backend API, PostgreSQL with Drizzle ORM, and JWT authentication.",
-    img: "/templates/moimoc.webp",
-    width: 1600,
-    height: 1006,
-    links: [
-      {
-        html: '<a target="_blank" rel="noopener noreferrer" href="https://www.moimoc.com">Live Demo</a>',
-        text: "Live Demo",
-        links: [
-          {
-            text: "Live Demo",
-            href: "https://www.moimoc.com",
-          },
-        ],
-      },
-      {
-        html: '<a target="_blank" rel="noopener noreferrer" href="https://github.com/PhucHuuDang/MoiMoc-Client">GitHub Repository</a>',
-        text: "GitHub Repository",
-        links: [
-          {
-            text: "GitHub Repository",
-            href: "https://github.com/PhucHuuDang/MoiMoc-Client",
-          },
-        ],
-      },
-    ],
-  },
-  {
     id: "furniture",
     date: "2025-09-15T00:00:00.000Z",
     dateText: "Sep 15, 2025",
@@ -311,136 +243,68 @@ export const TEMPLATES: Template[] = [
     ],
   },
   {
-    id: "marquee-light",
-    date: "2026-10-27T00:00:00.000Z",
-    dateText: "Oct 27, 2026",
+    id: "thaifruitz",
+    date: "2025-04-10T00:00:00.000Z",
+    dateText: "Apr 10, 2025",
     hasPro: false,
-    title: "Marquee Studio (Light Theme)",
+    title: "ThaiFruitz",
     headingSvg: HEADING_SPARKLE,
-    desc: "Crisp light theme interface for Marquee Studio design canvas. Optimized contrast ratios for sunlight environments with clean component inspector panels and token previews.",
-    img: "/templates/marquee-light.webp",
+    desc: "A production-ready e-commerce platform built with modern frontend architecture. Features responsive product listings, detail views, Zustand state caching, and Cloudinary media optimization.",
+    img: "/templates/thaifruitz.webp",
     width: 1600,
-    height: 1000,
+    height: 1006,
     links: [
       {
-        html: '<a target="_blank" rel="noopener noreferrer" href="https://marqueui.vercel.app">Live Demo</a>',
+        html: '<a target="_blank" rel="noopener noreferrer" href="https://thaifruitz.vercel.app">Live Demo</a>',
         text: "Live Demo",
         links: [
           {
             text: "Live Demo",
-            href: "https://marqueui.vercel.app",
+            href: "https://thaifruitz.vercel.app",
           },
         ],
       },
       {
-        html: '<a target="_blank" rel="noopener noreferrer" href="https://github.com/PhucHuuDang/marquee-studio">GitHub Repository</a>',
+        html: '<a target="_blank" rel="noopener noreferrer" href="https://github.com/PhucHuuDang/thaifruitz">GitHub Repository</a>',
         text: "GitHub Repository",
         links: [
           {
             text: "GitHub Repository",
-            href: "https://github.com/PhucHuuDang/marquee-studio",
+            href: "https://github.com/PhucHuuDang/thaifruitz",
           },
         ],
       },
     ],
   },
   {
-    id: "medusa-light",
-    date: "2026-10-14T00:00:00.000Z",
-    dateText: "Oct 14, 2026",
+    id: "moimoc",
+    date: "2024-10-20T00:00:00.000Z",
+    dateText: "Oct 20, 2024",
     hasPro: false,
-    title: "Medusa Commerce (Light Theme)",
+    title: "MoiMoc",
     headingSvg: HEADING_SPARKLE,
-    desc: "Light theme edition of the Medusa commerce landing experience featuring high-legibility typography, interactive module tabs, and streamlined navigation flows.",
-    img: "/templates/medusa-light.webp",
+    desc: "A real-world e-commerce website developed for a local brand, covering both frontend and backend. Combines Next.js responsive storefront, NestJS backend API, PostgreSQL with Drizzle ORM, and JWT authentication.",
+    img: "/templates/moimoc.webp",
     width: 1600,
-    height: 885,
+    height: 1006,
     links: [
       {
-        html: '<a target="_blank" rel="noopener noreferrer" href="https://medusa.vercel.app">Live Demo</a>',
+        html: '<a target="_blank" rel="noopener noreferrer" href="https://www.moimoc.com">Live Demo</a>',
         text: "Live Demo",
         links: [
           {
             text: "Live Demo",
-            href: "https://medusa.vercel.app",
+            href: "https://www.moimoc.com",
           },
         ],
       },
       {
-        html: '<a target="_blank" rel="noopener noreferrer" href="https://github.com/PhucHuuDang/medusa">GitHub Repository</a>',
+        html: '<a target="_blank" rel="noopener noreferrer" href="https://github.com/PhucHuuDang/MoiMoc-Client">GitHub Repository</a>',
         text: "GitHub Repository",
         links: [
           {
             text: "GitHub Repository",
-            href: "https://github.com/PhucHuuDang/medusa",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "hrm-light",
-    date: "2026-09-01T00:00:00.000Z",
-    dateText: "Sep 1, 2026",
-    hasPro: false,
-    title: "Notion HRM (Light Theme)",
-    headingSvg: HEADING_SPARKLE,
-    desc: "Daylight-optimized Notion-style HR management interface. Clean white backgrounds, crisp tabular lines, and fluid kanban board interactions for office environments.",
-    img: "/templates/hrm-light.webp",
-    width: 1600,
-    height: 966,
-    links: [
-      {
-        html: '<a target="_blank" rel="noopener noreferrer" href="https://hrm-seven-teal.vercel.app/employees">Live Demo</a>',
-        text: "Live Demo",
-        links: [
-          {
-            text: "Live Demo",
-            href: "https://hrm-seven-teal.vercel.app/employees",
-          },
-        ],
-      },
-      {
-        html: '<a target="_blank" rel="noopener noreferrer" href="https://github.com/PhucHuuDang/hrm">GitHub Repository</a>',
-        text: "GitHub Repository",
-        links: [
-          {
-            text: "GitHub Repository",
-            href: "https://github.com/PhucHuuDang/hrm",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "dashboards-light",
-    date: "2026-01-14T00:00:00.000Z",
-    dateText: "Jan 14, 2026",
-    hasPro: false,
-    title: "Management Dashboard (Light Theme)",
-    headingSvg: HEADING_SPARKLE,
-    desc: "Clean light-mode enterprise management dashboard interface for tracking facilities, sales metrics, customer orders, and regional store performance.",
-    img: "/templates/dashboards-light.webp",
-    width: 1600,
-    height: 1001,
-    links: [
-      {
-        html: '<a target="_blank" rel="noopener noreferrer" href="https://dashboards-three-drab.vercel.app/dashboard/locations">Live Demo</a>',
-        text: "Live Demo",
-        links: [
-          {
-            text: "Live Demo",
-            href: "https://dashboards-three-drab.vercel.app/dashboard/locations",
-          },
-        ],
-      },
-      {
-        html: '<a target="_blank" rel="noopener noreferrer" href="https://github.com/PhucHuuDang/dashboards">GitHub Repository</a>',
-        text: "GitHub Repository",
-        links: [
-          {
-            text: "GitHub Repository",
-            href: "https://github.com/PhucHuuDang/dashboards",
+            href: "https://github.com/PhucHuuDang/MoiMoc-Client",
           },
         ],
       },

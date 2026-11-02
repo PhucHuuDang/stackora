@@ -3,7 +3,6 @@ import { Sidebar } from "./sidebar"
 import { DottedBorder } from "./dotted-border"
 import { PremiumBanner } from "./premium-banner"
 import { TemplateArticle } from "./template-article"
-import { ShowcaseFooter } from "./showcase-footer"
 import { BackToTop } from "./back-to-top"
 import { TEMPLATES } from "../data/templates"
 import GradualBlur from "@/components/GradualBlur"
@@ -30,7 +29,6 @@ export function ShowcaseView() {
                 index={index}
               />
             ))}
-            <ShowcaseFooter totalCount={TEMPLATES.length} />
           </main>
         </div>
 
