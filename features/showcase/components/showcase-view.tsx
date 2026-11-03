@@ -7,12 +7,12 @@ import { BackToTop } from "./back-to-top"
 import { TEMPLATES } from "../data/templates"
 import GradualBlur from "@/components/GradualBlur"
 
-export function ShowcaseView() {
-  const freeCount = TEMPLATES.filter((t) => !t.hasPro).length
-  const proCount = TEMPLATES.filter((t) => t.hasPro).length
+const PRO_COUNT = TEMPLATES.filter((t) => t.hasPro).length
+const FREE_COUNT = TEMPLATES.length - PRO_COUNT
 
+export function ShowcaseView() {
   return (
-    <TemplateFilterProvider freeCount={freeCount} proCount={proCount}>
+    <TemplateFilterProvider freeCount={FREE_COUNT} proCount={PRO_COUNT}>
       <div className="flex min-h-full flex-col bg-white dark:bg-gray-950">
         <Sidebar />
 
@@ -20,7 +20,7 @@ export function ShowcaseView() {
           <DottedBorder />
 
           <main className="space-y-16 py-20 sm:space-y-20 sm:py-24">
-            <PremiumBanner proCount={proCount} />
+            <PremiumBanner proCount={PRO_COUNT} />
             {TEMPLATES.map((template, index) => (
               <TemplateArticle
                 key={template.id}

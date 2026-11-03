@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState, useEffect } from "react"
+import React, { useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import gsap from "gsap"
@@ -9,6 +9,7 @@ import { useGSAP } from "@gsap/react"
 import type { Template } from "../types"
 import { useTemplateFilter } from "./filter-tabs"
 import { cn } from "@/lib/utils"
+import { SparkleIcon } from "@/icons"
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(useGSAP, ScrollTrigger)
@@ -21,6 +22,8 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
   timeZone: "UTC",
 })
 
+const dateCache = new Map<string, string>()
+
 function FormattedTime({
   date,
   className,
@@ -28,26 +31,15 @@ function FormattedTime({
   date: string
   className?: string
 }) {
-  const d = new Date(date)
+  let formatted = dateCache.get(date)
+  if (!formatted) {
+    formatted = dateFormatter.format(new Date(date))
+    dateCache.set(date, formatted)
+  }
   return (
-    <time dateTime={d.toISOString()} className={className}>
-      {dateFormatter.format(d)}
+    <time dateTime={date} className={className}>
+      {formatted}
     </time>
-  )
-}
-
-function SparkleIcon() {
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true" className="h-4 w-4 flex-none">
-      <path
-        fill="#38BDF8"
-        d="M5.338 9.805c.11.418.439.747.857.857C7.282 10.948 8 11.44 8 12s-.718 1.052-1.805 1.338c-.418.11-.747.439-.857.857C5.052 15.281 4.56 16 4 16s-1.052-.718-1.338-1.805a1.205 1.205 0 0 0-.856-.857C.718 13.052 0 12.56 0 12s.718-1.052 1.806-1.338c.417-.11.746-.439.856-.857C2.948 8.718 3.441 8 4 8c.56 0 1.052.718 1.338 1.805Z"
-      />
-      <path
-        fill="#7DD3FC"
-        d="M12.717 2.432c.1.42.43.75.85.852C15.026 3.633 16 4.27 16 5s-.975 1.367-2.432 1.716c-.42.101-.75.432-.851.852C12.367 9.025 11.729 10 11 10c-.729 0-1.367-.975-1.716-2.432-.101-.42-.431-.75-.851-.852C6.975 6.367 6 5.73 6 5c0-.73.975-1.367 2.433-1.717.42-.1.75-.43.85-.85C9.634.974 10.272 0 11 0c.73 0 1.367.975 1.717 2.432Z"
-      />
-    </svg>
   )
 }
 
@@ -124,7 +116,7 @@ function ArticleHeader({
   )
 }
 
-export function TemplateArticle({
+export const TemplateArticle = React.memo(function TemplateArticle({
   template,
   index,
 }: {
@@ -139,24 +131,12 @@ export function TemplateArticle({
   const notchRef = useRef<HTMLDivElement>(null)
   const badgeRef = useRef<HTMLDivElement>(null)
 
-  const [paddingBottom, setPaddingBottom] = useState(0)
   const { filter } = useTemplateFilter()
 
   const isVisible =
     filter === "all" ||
     (filter === "premium" && template.hasPro) ||
     (filter === "free" && !template.hasPro)
-
-  useEffect(() => {
-    if (!contentRef.current) return
-    const observer = new ResizeObserver(() => {
-      if (!contentRef.current) return
-      const { height } = contentRef.current.getBoundingClientRect()
-      setPaddingBottom(8 * Math.ceil(height / 8) - height)
-    })
-    observer.observe(contentRef.current)
-    return () => observer.disconnect()
-  }, [])
 
   useGSAP(
     () => {
@@ -241,8 +221,10 @@ export function TemplateArticle({
     <article
       ref={articleRef}
       id={template.id}
-      className={cn("scroll-mt-16", !isVisible && "hidden")}
-      style={{ paddingBottom: isVisible ? `${paddingBottom}px` : undefined }}
+      className={cn(
+        "scroll-mt-16 [contain-intrinsic-size:auto_800px] [content-visibility:auto]",
+        !isVisible && "hidden"
+      )}
     >
       <div ref={contentRef}>
         <ArticleHeader
@@ -311,4 +293,4 @@ export function TemplateArticle({
       </div>
     </article>
   )
-}
+})

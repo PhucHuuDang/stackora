@@ -1,3 +1,5 @@
 export { LicenseIcon } from "./license-icon"
 export { GitHubIcon } from "./github-icon"
 export { ArrowUpRightIcon } from "./arrow-up-right-icon"
+export { SparkleIcon } from "./sparkle-icon"
+export { ArrowUpIcon } from "./arrow-up-icon"

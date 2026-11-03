@@ -1,6 +1,7 @@
 "use client"
 
 import {
+  memo,
   useEffect,
   useLayoutEffect,
   useMemo,
@@ -223,7 +224,7 @@ const GradualBlur = ({
     update()
     const source = element ?? window
     source.addEventListener("scroll", update, { passive: true })
-    window.addEventListener("resize", update)
+    window.addEventListener("resize", update, { passive: true })
     const observer =
       element && typeof ResizeObserver !== "undefined"
         ? new ResizeObserver(update)
@@ -323,5 +324,7 @@ const GradualBlur = ({
   )
 }
 
-export { GradualBlur }
-export default GradualBlur
+const MemoizedGradualBlur = memo(GradualBlur)
+
+export { MemoizedGradualBlur as GradualBlur }
+export default MemoizedGradualBlur

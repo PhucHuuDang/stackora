@@ -1,10 +1,11 @@
+import React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { TEMPLATES } from "../data/templates"
 import { CloudShader } from "@/components/ui/cloud-shader"
 import { LicenseIcon, GitHubIcon, ArrowUpRightIcon } from "@/icons"
 
-export function Sidebar() {
+export const Sidebar = React.memo(function Sidebar() {
   return (
     <div className="relative isolate flex-none overflow-hidden px-6 lg:pointer-events-none lg:fixed lg:inset-0 lg:z-40 lg:flex lg:px-0">
       {/* Background container with CloudShader sky & airplane wing */}
@@ -114,4 +115,4 @@ export function Sidebar() {
       </div>
     </div>
   )
-}
+})

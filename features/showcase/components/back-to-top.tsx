@@ -1,33 +1,22 @@
 "use client"
 
-import { useEffect, useState } from "react"
-
-function ArrowUpIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 20 20"
-      fill="currentColor"
-      aria-hidden="true"
-      className={className}
-    >
-      <path
-        fillRule="evenodd"
-        d="M10 17a.75.75 0 0 1-.75-.75V5.612L5.29 9.77a.75.75 0 0 1-1.08-1.04l5.25-5.5a.75.75 0 0 1 1.08 0l5.25 5.5a.75.75 0 1 1-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0 1 10 17Z"
-        clipRule="evenodd"
-      />
-    </svg>
-  )
-}
+import { useEffect, useState, useCallback } from "react"
+import { ArrowUpIcon } from "@/icons"
 
 export function BackToTop() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      // Show when scrolled past 600px
-      const shouldShow = window.scrollY > 600
-      setIsVisible(shouldShow)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const shouldShow = window.scrollY > 600
+          setIsVisible((prev) => (prev !== shouldShow ? shouldShow : prev))
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true })
@@ -38,9 +27,9 @@ export function BackToTop() {
     }
   }, [])
 
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" })
-  }
+  }, [])
 
   return (
     <button

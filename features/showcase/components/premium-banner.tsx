@@ -1,9 +1,14 @@
 "use client"
 
+import React from "react"
 import Link from "next/link"
 import { useTemplateFilter } from "./filter-tabs"
 
-export function PremiumBanner({ proCount = 5 }: { proCount?: number }) {
+export const PremiumBanner = React.memo(function PremiumBanner({
+  proCount = 5,
+}: {
+  proCount?: number
+}) {
   const { filter } = useTemplateFilter()
 
   if (filter !== "premium") {
@@ -43,4 +48,4 @@ export function PremiumBanner({ proCount = 5 }: { proCount?: number }) {
       </div>
     </div>
   )
-}
+})

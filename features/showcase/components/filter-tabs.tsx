@@ -57,8 +57,13 @@ export function TemplateFilterProvider({
     [proCount, freeCount]
   )
 
+  const contextValue = useMemo(
+    () => ({ filter, setFilter, counts }),
+    [filter, setFilter, counts]
+  )
+
   return (
-    <FilterContext.Provider value={{ filter, setFilter, counts }}>
+    <FilterContext.Provider value={contextValue}>
       {children}
     </FilterContext.Provider>
   )

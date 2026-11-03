@@ -236,18 +236,18 @@ export const CloudShader = ({
   const paramsRef = useRef({
     speed,
     count,
-    cloudColor,
-    skyTopColor,
-    skyBottomColor,
+    cloudRgb: parseHex(cloudColor),
+    skyTopRgb: parseHex(skyTopColor),
+    skyBottomRgb: parseHex(skyBottomColor),
   })
 
   useEffect(() => {
     paramsRef.current = {
       speed,
       count,
-      cloudColor,
-      skyTopColor,
-      skyBottomColor,
+      cloudRgb: parseHex(cloudColor),
+      skyTopRgb: parseHex(skyTopColor),
+      skyBottomRgb: parseHex(skyBottomColor),
     }
   }, [speed, count, cloudColor, skyTopColor, skyBottomColor])
 
@@ -323,24 +323,37 @@ export const CloudShader = ({
       if (!running) return
       const p = paramsRef.current
       const elapsed = reduceMotion ? 0 : ((now - start) / 1000) * p.speed
-      const cloud = parseHex(p.cloudColor)
-      const skyTop = parseHex(p.skyTopColor)
-      const skyBottom = parseHex(p.skyBottomColor)
 
       gl.uniform1f(loc.time, elapsed)
       gl.uniform1f(loc.count, Math.min(6, Math.max(1, p.count)))
-      gl.uniform3f(loc.cloud, cloud[0], cloud[1], cloud[2])
-      gl.uniform3f(loc.skyTop, skyTop[0], skyTop[1], skyTop[2])
-      gl.uniform3f(loc.skyBottom, skyBottom[0], skyBottom[1], skyBottom[2])
+      gl.uniform3f(loc.cloud, p.cloudRgb[0], p.cloudRgb[1], p.cloudRgb[2])
+      gl.uniform3f(loc.skyTop, p.skyTopRgb[0], p.skyTopRgb[1], p.skyTopRgb[2])
+      gl.uniform3f(
+        loc.skyBottom,
+        p.skyBottomRgb[0],
+        p.skyBottomRgb[1],
+        p.skyBottomRgb[2]
+      )
       gl.drawArrays(gl.TRIANGLES, 0, 3)
       frame = requestAnimationFrame(draw)
     }
+
+    const handleVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(frame)
+        frame = 0
+      } else if (!frame && running) {
+        frame = requestAnimationFrame(draw)
+      }
+    }
+    document.addEventListener("visibilitychange", handleVisibility)
 
     frame = requestAnimationFrame(draw)
 
     return () => {
       running = false
       cancelAnimationFrame(frame)
+      document.removeEventListener("visibilitychange", handleVisibility)
       observer.disconnect()
       gl.deleteBuffer(buffer)
       gl.deleteProgram(program)
