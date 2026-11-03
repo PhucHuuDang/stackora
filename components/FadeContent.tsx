@@ -11,7 +11,9 @@ import {
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
-gsap.registerPlugin(ScrollTrigger)
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 export type FadeContentEffect =
   "fade" | "focus" | "develop" | "dissolve" | "mist" | "pixel"
@@ -523,6 +525,11 @@ const FadeContent = ({
         end: exit ? `bottom ${threshold * 100}%` : undefined,
         once: !replaying,
         onEnter: () => tl.play(),
+        onRefresh: (self) => {
+          if (self.progress > 0 && tl.progress() === 0 && !tl.isActive()) {
+            tl.play()
+          }
+        },
         onLeave: exit ? () => tl.reverse() : undefined,
         onEnterBack: exit ? () => tl.play() : undefined,
         onLeaveBack: once ? undefined : () => tl.reverse(),

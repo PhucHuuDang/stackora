@@ -1,6 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import { StarField } from "./star-field"
+import { TEMPLATES } from "../data/templates"
+import FadeContent from "@/components/FadeContent"
 
 function LicenseIcon({ className }: { className?: string }) {
   return (
@@ -92,64 +94,72 @@ export function Sidebar() {
             <div className="relative">
               <StarField />
 
-              <div>
-                <Link className="flex items-center gap-3" href="/">
-                  <Image
-                    alt="Logo"
-                    width={28}
-                    height={28}
-                    className="w-7 rotate-0 overflow-hidden rounded-lg sm:w-9"
-                    src="/icon.svg"
-                    priority
-                  />
-                  <span className="text-xl font-bold text-white sm:text-3xl">
-                    Square UI
-                  </span>
-                </Link>
-              </div>
+              <FadeContent
+                blur={10}
+                duration={0.9}
+                ease="power2.out"
+                trigger="mount"
+                delay={0.1}
+              >
+                <div>
+                  <Link className="flex items-center gap-3" href="/">
+                    <Image
+                      alt="Stackora Logo"
+                      width={36}
+                      height={36}
+                      className="h-8 w-8 rounded-xl transition-transform duration-300 hover:scale-105 sm:h-10 sm:w-10"
+                      src="/icon.svg"
+                      priority
+                    />
+                    <span className="text-xl font-bold tracking-tight text-white sm:text-3xl">
+                      Stackora
+                    </span>
+                  </Link>
+                </div>
 
-              <h1 className="mt-14 font-display text-4xl/tight font-light text-white">
-                20+ Open Source Dashboards for Shadcn UI
-              </h1>
+                <h1 className="mt-14 font-display text-4xl/tight font-light text-white">
+                  {TEMPLATES.length}+ Open Source Dashboards for Shadcn UI
+                </h1>
 
-              <p className="mt-4 text-sm/6 text-gray-300">
-                Collection of beautifully crafted open-source layouts UI built
-                with shadcn/ui.
-              </p>
+                <p className="mt-4 text-sm/6 text-gray-300">
+                  Collection of beautifully crafted open-source layouts UI built
+                  with shadcn/ui.
+                </p>
 
-              <div className="mt-8 flex flex-wrap justify-center gap-x-1 gap-y-3 sm:gap-x-2 lg:justify-start">
-                <Link
-                  className="group relative isolate flex flex-none items-center gap-x-3 rounded-lg px-2 py-0.5 text-[0.8125rem]/6 font-medium text-white/30 transition-colors hover:text-sky-300"
-                  href="/license"
-                >
-                  <span className="absolute inset-0 -z-10 scale-75 rounded-lg bg-white/5 opacity-0 transition group-hover:scale-100 group-hover:opacity-100" />
-                  <LicenseIcon className="h-4 w-4 flex-none" />
-                  <span className="self-baseline text-white">License</span>
-                </Link>
+                <div className="mt-8 flex flex-wrap justify-center gap-x-1 gap-y-3 sm:gap-x-2 lg:justify-start">
+                  <Link
+                    className="group relative isolate flex flex-none items-center gap-x-3 rounded-lg px-2 py-0.5 text-[0.8125rem]/6 font-medium text-white/30 transition-colors hover:text-sky-300"
+                    href="/license"
+                  >
+                    <span className="absolute inset-0 -z-10 scale-75 rounded-lg bg-white/5 opacity-0 transition group-hover:scale-100 group-hover:opacity-100" />
+                    <LicenseIcon className="h-4 w-4 flex-none" />
+                    <span className="self-baseline text-white">License</span>
+                  </Link>
 
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative isolate flex flex-none items-center gap-x-3 rounded-lg px-2 py-0.5 text-[0.8125rem]/6 font-medium text-white/30 transition-colors hover:text-sky-300"
-                  href="https://github.com/ln-dev7/square-ui"
-                >
-                  <span className="absolute inset-0 -z-10 scale-75 rounded-lg bg-white/5 opacity-0 transition group-hover:scale-100 group-hover:opacity-100" />
-                  <GitHubIcon className="h-4 w-4 flex-none" />
-                  <span className="self-baseline text-white">GitHub</span>
-                </a>
-              </div>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative isolate flex flex-none items-center gap-x-3 rounded-lg px-2 py-0.5 text-[0.8125rem]/6 font-medium text-white/30 transition-colors hover:text-sky-300"
+                    href="https://github.com/PhucHuuDang/stackora"
+                  >
+                    <span className="absolute inset-0 -z-10 scale-75 rounded-lg bg-white/5 opacity-0 transition group-hover:scale-100 group-hover:opacity-100" />
+                    <GitHubIcon className="h-4 w-4 flex-none" />
+                    <span className="self-baseline text-white">GitHub</span>
+                  </a>
+                </div>
 
-              <div className="mt-6 flex flex-col items-center gap-3 lg:items-start">
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative isolate inline-flex items-center justify-center gap-2 rounded-full border border-amber-500/80 bg-amber-400 px-4 py-2 text-sm font-semibold text-amber-950 shadow transition-colors before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-amber-400 before:shadow after:absolute after:inset-0 after:-z-10 after:rounded-full hover:after:bg-white/25"
-                  href="https://shadcndashboard.com"
-                >
-                  <span>Pro Templates on Shadcndashboard.com</span>
-                  <ArrowUpRightIcon className="size-4" />
-                </a>
-              </div>
+                <div className="mt-6 flex flex-col items-center gap-3 lg:items-start">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative isolate inline-flex items-center justify-center gap-2 rounded-full border border-amber-500/80 bg-amber-400 px-4 py-2 text-sm font-semibold text-amber-950 shadow transition-colors before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-amber-400 before:shadow after:absolute after:inset-0 after:-z-10 after:rounded-full hover:after:bg-white/25"
+                    href="https://shadcndashboard.com"
+                  >
+                    <span>Pro Templates on Shadcndashboard.com</span>
+                    <ArrowUpRightIcon className="size-4" />
+                  </a>
+                </div>
+              </FadeContent>
             </div>
           </div>
 

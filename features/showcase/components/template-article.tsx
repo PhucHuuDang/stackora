@@ -8,6 +8,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react"
 import type { Template } from "../types"
 import { useTemplateFilter } from "./filter-tabs"
+import { cn } from "@/lib/utils"
+import FadeContent from "@/components/FadeContent"
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(useGSAP, ScrollTrigger)
@@ -66,7 +68,7 @@ function ArticleHeader({
   return (
     <header className="relative mb-10 xl:mb-0">
       {/* Sticky date & PRO badge for wide screens (xl) */}
-      <div className="pointer-events-none absolute top-0 left-[max(-0.5rem,calc(50%-18.625rem))] z-50 flex h-4 items-center justify-end gap-x-2 lg:right-[calc(max(2rem,50%-38rem)+40rem)] lg:left-0 lg:min-w-[32rem] xl:h-8">
+      <div className="pointer-events-none absolute top-0 left-[max(-0.5rem,calc(50%-18.625rem))] z-50 flex h-4 items-center justify-end gap-x-3 lg:right-[calc(max(2rem,50%-38rem)+40rem)] lg:left-0 lg:min-w-[32rem] xl:h-8">
         <div
           ref={badgeRef}
           className="inline-flex items-center gap-2 will-change-transform"
@@ -84,13 +86,13 @@ function ArticleHeader({
           <Link href={`#${id}`} className="inline-flex">
             <FormattedTime
               date={date}
-              className="hidden xl:pointer-events-auto xl:block xl:text-[11px] xl:leading-4 xl:font-medium xl:text-white/50"
+              className="hidden whitespace-nowrap transition-colors xl:pointer-events-auto xl:block xl:text-[11px] xl:leading-4 xl:font-medium xl:text-white/60"
             />
           </Link>
         </div>
         <div
           ref={notchRef}
-          className="h-[0.0625rem] w-3.5 origin-right bg-gray-400 will-change-transform lg:-mr-3.5 xl:mr-0 xl:bg-gray-300"
+          className="h-[0.0625rem] w-3.5 bg-gray-400 will-change-transform lg:-mr-3.5 xl:mr-0 xl:bg-gray-300"
         />
       </div>
 
@@ -175,7 +177,7 @@ export function TemplateArticle({
 
           if (reduceMotion) {
             if (imageWrapRef.current) {
-              gsap.set(imageWrapRef.current, { opacity: 1, y: 0, scale: 1 })
+              gsap.set(imageWrapRef.current, { opacity: 1, y: 0 })
             }
             if (textWrapRef.current) {
               gsap.set(textWrapRef.current.children, { opacity: 1, y: 0 })
@@ -183,53 +185,7 @@ export function TemplateArticle({
             return
           }
 
-          // 1. Entrance Reveal Timeline
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: articleRef.current,
-              start: index === 0 ? "top 95%" : "top 85%",
-              toggleActions: "play none none none",
-              once: true,
-            },
-          })
-
-          if (imageWrapRef.current) {
-            tl.fromTo(
-              imageWrapRef.current,
-              {
-                opacity: 0,
-                y: 44,
-                scale: 0.97,
-              },
-              {
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                duration: 0.85,
-                ease: "power2.out",
-              }
-            )
-          }
-
-          if (textWrapRef.current) {
-            tl.fromTo(
-              textWrapRef.current.children,
-              {
-                opacity: 0,
-                y: 20,
-              },
-              {
-                opacity: 1,
-                y: 0,
-                duration: 0.6,
-                stagger: 0.08,
-                ease: "power2.out",
-              },
-              "-=0.55"
-            )
-          }
-
-          // 2. Smooth Scroll Parallax (Scrub) on the Preview Image
+          // 1. Smooth Scroll Parallax (Scrub) on the Preview Image
           if (imageInnerRef.current) {
             gsap.fromTo(
               imageInnerRef.current,
@@ -249,7 +205,7 @@ export function TemplateArticle({
             )
           }
 
-          // 3. Active Timeline Marker and Notch Glow
+          // 2. Active Timeline Marker and Notch Glow
           ScrollTrigger.create({
             trigger: articleRef.current,
             start: "top 55%",
@@ -257,20 +213,20 @@ export function TemplateArticle({
             onToggle: (self) => {
               if (notchRef.current) {
                 gsap.to(notchRef.current, {
-                  scaleX: self.isActive ? 1.75 : 1,
                   backgroundColor: self.isActive ? "#38bdf8" : "#9ca3af",
                   boxShadow: self.isActive
-                    ? "0 0 12px rgba(56, 189, 248, 0.8)"
+                    ? "0 0 10px rgba(56, 189, 248, 0.85)"
                     : "0 0 0px transparent",
-                  duration: 0.35,
+                  scaleY: self.isActive ? 2 : 1,
+                  opacity: self.isActive ? 1 : 0.45,
+                  duration: 0.3,
                   ease: "power2.out",
                 })
               }
               if (badgeRef.current) {
                 gsap.to(badgeRef.current, {
-                  scale: self.isActive ? 1.05 : 1,
-                  opacity: self.isActive ? 1 : 0.7,
-                  duration: 0.35,
+                  opacity: self.isActive ? 1 : 0.65,
+                  duration: 0.3,
                   ease: "power2.out",
                 })
               }
@@ -282,14 +238,12 @@ export function TemplateArticle({
     { scope: articleRef, dependencies: [isVisible] }
   )
 
-  if (!isVisible) return null
-
   return (
     <article
       ref={articleRef}
       id={template.id}
-      className="scroll-mt-16"
-      style={{ paddingBottom: `${paddingBottom}px` }}
+      className={cn("scroll-mt-16", !isVisible && "hidden")}
+      style={{ paddingBottom: isVisible ? `${paddingBottom}px` : undefined }}
     >
       <div ref={contentRef}>
         <ArticleHeader
@@ -306,52 +260,71 @@ export function TemplateArticle({
               className="typography mx-auto max-w-lg lg:mx-0 lg:w-0 lg:max-w-xl lg:flex-auto"
               data-mdx-content="true"
             >
-              {/* Image preview with ring overlay & subtle parallax inner */}
-              <div
-                ref={imageWrapRef}
-                className="group/card relative overflow-hidden rounded-xl bg-gray-50 transition-shadow duration-300 will-change-transform hover:shadow-2xl hover:shadow-sky-500/10 dark:bg-gray-900"
+              {/* Image preview with FadeContent lens blur entrance */}
+              <FadeContent
+                blur={10}
+                duration={0.8}
+                ease="power2.out"
+                trigger="scroll"
+                threshold={0.12}
+                once
               >
-                <div ref={imageInnerRef} className="will-change-transform">
-                  <Image
-                    src={template.img}
-                    alt={template.title}
-                    width={template.width || 3024}
-                    height={template.height || 1896}
-                    quality={100}
-                    priority={index < 2}
-                    className="object-cover transition-transform duration-500 ease-out group-hover/card:scale-[1.015]"
-                  />
-                </div>
-                <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 transition-colors duration-300 ring-inset group-hover/card:ring-sky-500/30 dark:ring-white/10" />
-              </div>
-
-              {/* Text content with staggered reveal */}
-              <div ref={textWrapRef}>
-                {/* Title with sparkle icon */}
-                <h2>
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={`#${template.id}`}
-                  >
-                    <SparkleIcon />
-                    {template.title}
-                  </a>
-                </h2>
-
-                {/* Description */}
-                <p>{template.desc}</p>
-
-                {/* Links list */}
-                <ul>
-                  {template.links.map((linkGroup, idx) => (
-                    <li
-                      key={idx}
-                      dangerouslySetInnerHTML={{ __html: linkGroup.html }}
+                <div
+                  ref={imageWrapRef}
+                  className="group/card relative overflow-hidden rounded-xl bg-gray-50 transition-shadow duration-300 will-change-transform hover:shadow-2xl hover:shadow-sky-500/10 dark:bg-gray-900"
+                >
+                  <div ref={imageInnerRef} className="will-change-transform">
+                    <Image
+                      src={template.img}
+                      alt={template.title}
+                      width={template.width || 3024}
+                      height={template.height || 1896}
+                      quality={100}
+                      priority={index < 2}
+                      className="object-cover"
                     />
-                  ))}
-                </ul>
-              </div>
+                  </div>
+                  <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-gray-900/10 transition-colors duration-300 ring-inset group-hover/card:ring-sky-500/30 dark:ring-white/10" />
+                </div>
+              </FadeContent>
+
+              {/* Text content with FadeContent smooth reveal */}
+              <FadeContent
+                blur={6}
+                duration={0.7}
+                delay={0.08}
+                ease="power2.out"
+                trigger="scroll"
+                threshold={0.12}
+                once
+              >
+                <div ref={textWrapRef}>
+                  {/* Title with sparkle icon */}
+                  <h2>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={`#${template.id}`}
+                    >
+                      <SparkleIcon />
+                      {template.title}
+                    </a>
+                  </h2>
+
+                  {/* Description */}
+                  <p>{template.desc}</p>
+
+                  {/* Links list */}
+                  <ul>
+                    {template.links.map((linkGroup, idx) => (
+                      <li
+                        key={idx}
+                        dangerouslySetInnerHTML={{ __html: linkGroup.html }}
+                      />
+                    ))}
+                  </ul>
+                </div>
+              </FadeContent>
             </div>
           </div>
         </div>

@@ -19,6 +19,10 @@ export interface Template {
   width: number
   height: number
   links: TemplateLinkItem[]
+  tags?: string[]
+  features?: string[]
+  liveUrl?: string
+  githubUrl?: string
 }
 
 export type TemplateFilter = "all" | "premium" | "free"

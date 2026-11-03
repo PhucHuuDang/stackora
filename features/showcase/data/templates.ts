@@ -13,8 +13,23 @@ export const TEMPLATES: Template[] = [
     headingSvg: HEADING_SPARKLE,
     desc: "An interactive design canvas and component studio that runs directly on your codebase. Features real-time selection frames, layer hierarchy, dynamic theme switching, token synchronization, and live component previews.",
     img: "/templates/marquee-dark.webp",
-    width: 1600,
+    width: 1584,
     height: 1000,
+    liveUrl: "https://marqueui.vercel.app",
+    githubUrl: "https://github.com/PhucHuuDang/marquee-studio",
+    tags: [
+      "Next.js 15",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Canvas API",
+      "TypeScript",
+    ],
+    features: [
+      "Real-time visual selection frames",
+      "Dynamic layer hierarchy inspector",
+      "Live token & theme synchronization",
+      "Interactive code component preview",
+    ],
     links: [
       {
         html: '<a target="_blank" rel="noopener noreferrer" href="https://marqueui.vercel.app">Live Demo</a>',
@@ -47,8 +62,17 @@ export const TEMPLATES: Template[] = [
     headingSvg: HEADING_SPARKLE,
     desc: "A high-fidelity recreation of Medusa's open-source agentic commerce platform landing page. Features tab-switchable commerce modules, admin harness, animated mega-menus, sticky header collapse, and sleek light/dark themes.",
     img: "/templates/medusa-dark.webp",
-    width: 1600,
+    width: 1580,
     height: 885,
+    liveUrl: "https://medusa.vercel.app",
+    githubUrl: "https://github.com/PhucHuuDang/medusa",
+    tags: ["Next.js", "React 19", "Tailwind CSS", "Commerce API", "TypeScript"],
+    features: [
+      "Tab-switchable commerce module harness",
+      "Interactive mega-menu navigation",
+      "Sticky scroll header collapsing",
+      "Sleek dual light/dark themes",
+    ],
     links: [
       {
         html: '<a target="_blank" rel="noopener noreferrer" href="https://medusa.vercel.app">Live Demo</a>',
@@ -83,6 +107,21 @@ export const TEMPLATES: Template[] = [
     img: "/templates/hrm-dark.webp",
     width: 1600,
     height: 966,
+    liveUrl: "https://hrm-seven-teal.vercel.app/employees",
+    githubUrl: "https://github.com/PhucHuuDang/hrm",
+    tags: [
+      "Next.js",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Kanban Board",
+      "TypeScript",
+    ],
+    features: [
+      "Multi-stage candidate Kanban pipeline",
+      "Detailed slide-out profile drawers",
+      "Searchable staff & employee directory",
+      "Executive KPI analytics & metrics",
+    ],
     links: [
       {
         html: '<a target="_blank" rel="noopener noreferrer" href="https://hrm-seven-teal.vercel.app/employees">Live Demo</a>',
@@ -117,6 +156,15 @@ export const TEMPLATES: Template[] = [
     img: "/templates/finguard.webp",
     width: 1600,
     height: 1010,
+    liveUrl: "https://finguard.vercel.app",
+    githubUrl: "https://github.com/PhucHuuDang/finguard",
+    tags: ["Next.js", "Tailwind CSS", "Shadcn UI", "Recharts", "TypeScript"],
+    features: [
+      "Real-time net worth & portfolio tracker",
+      "Interactive asset allocation charts",
+      "Multi-account transaction ledger",
+      "Security audit & risk rating cards",
+    ],
     links: [
       {
         html: '<a target="_blank" rel="noopener noreferrer" href="https://finguard.vercel.app">Live Demo</a>',
@@ -151,6 +199,15 @@ export const TEMPLATES: Template[] = [
     img: "/templates/dashboards-dark.webp",
     width: 1600,
     height: 1006,
+    liveUrl: "https://dashboards-three-drab.vercel.app/dashboard/locations",
+    githubUrl: "https://github.com/PhucHuuDang/dashboards",
+    tags: ["Next.js", "Tailwind CSS", "Shadcn UI", "Data Viz", "TypeScript"],
+    features: [
+      "Global locations management matrix",
+      "Real-time sales & conversion metrics",
+      "High-density data tables with sorting",
+      "Responsive admin layout & collapsible nav",
+    ],
     links: [
       {
         html: '<a target="_blank" rel="noopener noreferrer" href="https://dashboards-three-drab.vercel.app/dashboard/locations">Live Demo</a>',
@@ -185,6 +242,15 @@ export const TEMPLATES: Template[] = [
     img: "/templates/furniture.webp",
     width: 1600,
     height: 1006,
+    liveUrl: "https://furniture-harry.vercel.app",
+    githubUrl: "https://github.com/PhucHuuDang/furniture",
+    tags: ["Vue 3", "Tailwind CSS", "Vite", "E-Commerce", "Pinia"],
+    features: [
+      "Editorial product grid interactions",
+      "Interactive materials & color switchers",
+      "Fluid animated cart transitions",
+      "Clean Scandinavian design aesthetic",
+    ],
     links: [
       {
         html: '<a target="_blank" rel="noopener noreferrer" href="https://furniture-harry.vercel.app">Live Demo</a>',
@@ -219,6 +285,15 @@ export const TEMPLATES: Template[] = [
     img: "/templates/portfolio.webp",
     width: 1600,
     height: 1006,
+    liveUrl: "https://harrydang.com",
+    githubUrl: "https://github.com/PhucHuuDang/harrydang",
+    tags: ["Next.js", "Tailwind CSS", "Framer Motion", "GSAP", "TypeScript"],
+    features: [
+      "Generative retro canvas backgrounds",
+      "Tactile audio sound micro-interactions",
+      "Curated work showcase cards",
+      "Smooth dark & light theme toggle",
+    ],
     links: [
       {
         html: '<a target="_blank" rel="noopener noreferrer" href="https://harrydang.com">Live Demo</a>',
@@ -253,6 +328,15 @@ export const TEMPLATES: Template[] = [
     img: "/templates/thaifruitz.webp",
     width: 1600,
     height: 1006,
+    liveUrl: "https://thaifruitz.vercel.app",
+    githubUrl: "https://github.com/PhucHuuDang/thaifruitz",
+    tags: ["Next.js", "Tailwind CSS", "Zustand", "Cloudinary", "TypeScript"],
+    features: [
+      "Faceted product search & category filters",
+      "Slide-over cart with live quantity sync",
+      "Cloudinary responsive image delivery",
+      "Optimistic UI state with Zustand",
+    ],
     links: [
       {
         html: '<a target="_blank" rel="noopener noreferrer" href="https://thaifruitz.vercel.app">Live Demo</a>',
@@ -287,6 +371,15 @@ export const TEMPLATES: Template[] = [
     img: "/templates/moimoc.webp",
     width: 1600,
     height: 1006,
+    liveUrl: "https://www.moimoc.com",
+    githubUrl: "https://github.com/PhucHuuDang/MoiMoc-Client",
+    tags: ["Next.js", "NestJS", "PostgreSQL", "Drizzle ORM", "TypeScript"],
+    features: [
+      "End-to-end storefront & RESTful API",
+      "Relational PostgreSQL schema & migrations",
+      "JWT user authentication & profile history",
+      "Admin order processing pipeline",
+    ],
     links: [
       {
         html: '<a target="_blank" rel="noopener noreferrer" href="https://www.moimoc.com">Live Demo</a>',
