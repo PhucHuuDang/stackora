@@ -1,4 +1,4 @@
-import { TemplateFilterProvider, TemplateFilterButtons } from "./filter-tabs"
+import { TemplateFilterProvider } from "./filter-tabs"
 import { Sidebar } from "./sidebar"
 import { DottedBorder } from "./dotted-border"
 import { PremiumBanner } from "./premium-banner"
@@ -18,9 +18,8 @@ export function ShowcaseView() {
 
         <div className="relative flex-auto">
           <DottedBorder />
-          <TemplateFilterButtons />
 
-          <main className="space-y-16 py-24 sm:space-y-20 sm:py-28">
+          <main className="space-y-16 py-20 sm:space-y-20 sm:py-24">
             <PremiumBanner proCount={proCount} />
             {TEMPLATES.map((template, index) => (
               <TemplateArticle

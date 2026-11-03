@@ -47,14 +47,13 @@ export function BackToTop() {
       type="button"
       onClick={scrollToTop}
       aria-label="Scroll to top of page"
-      className={`group fixed right-6 bottom-6 z-40 flex items-center gap-1.5 rounded-full border border-white/10 bg-gray-900/80 px-3 py-1.5 text-xs font-medium text-gray-300 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-sky-500/40 hover:bg-gray-800 hover:text-white sm:right-8 sm:bottom-8 ${
+      className={`group fixed right-6 bottom-6 z-40 flex h-9 w-9 items-center justify-center rounded-lg border border-white/15 bg-gray-900/90 text-white shadow-xl shadow-black/40 backdrop-blur-md transition-all duration-300 hover:border-white hover:bg-white hover:text-gray-950 hover:shadow-lg hover:shadow-white/20 sm:right-8 sm:bottom-8 ${
         isVisible
-          ? "translate-y-0 opacity-100"
-          : "pointer-events-none translate-y-2 opacity-0"
+          ? "translate-y-0 scale-100 opacity-100"
+          : "pointer-events-none translate-y-2 scale-95 opacity-0"
       }`}
     >
-      <ArrowUpIcon className="h-3.5 w-3.5 text-sky-400 transition-transform duration-200 group-hover:-translate-y-0.5" />
-      <span className="hidden sm:inline">Top</span>
+      <ArrowUpIcon className="h-4 w-4 text-white/90 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:text-gray-950" />
     </button>
   )
 }
