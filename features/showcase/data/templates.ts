@@ -5,6 +5,45 @@ const HEADING_SPARKLE =
 
 export const TEMPLATES: Template[] = [
   {
+    id: "nacre",
+    date: "2026-11-08T00:00:00.000Z",
+    dateText: "Nov 8, 2026",
+    hasPro: true,
+    title: "Nacre Skincare",
+    headingSvg: HEADING_SPARKLE,
+    desc: "A modern, minimalist skincare e-commerce platform and routine builder. Features an interactive 4-step routine showcase, liquid arch editorial photography layouts, floating pill navbar, slide-out cart bag, and dual light/dark themes.",
+    img: "/templates/nacre-dark.webp",
+    width: 1600,
+    height: 1000,
+    liveUrl: "https://nacre-ui.vercel.app",
+    tags: [
+      "Next.js 15",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Motion",
+      "TypeScript",
+      "Clerk",
+    ],
+    features: [
+      "Interactive 4-step skincare routine builder",
+      "Floating glass navigation bar with cart drawer",
+      "Editorial liquid arch photography layouts",
+      "Seamless light and dark mode aesthetic",
+    ],
+    links: [
+      {
+        html: '<a target="_blank" rel="noopener noreferrer" href="https://nacre-ui.vercel.app">Live Demo</a>',
+        text: "Live Demo",
+        links: [
+          {
+            text: "Live Demo",
+            href: "https://nacre-ui.vercel.app",
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: "marquee-studio",
     date: "2026-10-28T00:00:00.000Z",
     dateText: "Oct 28, 2026",
@@ -140,45 +179,6 @@ export const TEMPLATES: Template[] = [
           {
             text: "GitHub Repository",
             href: "https://github.com/PhucHuuDang/hrm",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "nacre",
-    date: "2026-08-16T00:00:00.000Z",
-    dateText: "Aug 16, 2026",
-    hasPro: true,
-    title: "Nacre Skincare",
-    headingSvg: HEADING_SPARKLE,
-    desc: "A modern, minimalist skincare e-commerce platform and routine builder. Features an interactive 4-step routine showcase, liquid arch editorial photography layouts, floating pill navbar, slide-out cart bag, and dual light/dark themes.",
-    img: "/templates/nacre-dark.webp",
-    width: 1600,
-    height: 1000,
-    liveUrl: "https://nacre-ui.vercel.app",
-    tags: [
-      "Next.js 15",
-      "Tailwind CSS",
-      "Shadcn UI",
-      "Motion",
-      "TypeScript",
-      "Clerk",
-    ],
-    features: [
-      "Interactive 4-step skincare routine builder",
-      "Floating glass navigation bar with cart drawer",
-      "Editorial liquid arch photography layouts",
-      "Seamless light and dark mode aesthetic",
-    ],
-    links: [
-      {
-        html: '<a target="_blank" rel="noopener noreferrer" href="https://nacre-ui.vercel.app">Live Demo</a>',
-        text: "Live Demo",
-        links: [
-          {
-            text: "Live Demo",
-            href: "https://nacre-ui.vercel.app",
           },
         ],
       },
