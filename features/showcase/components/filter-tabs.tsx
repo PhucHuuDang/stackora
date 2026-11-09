@@ -21,7 +21,7 @@ interface FilterContextType {
 const FilterContext = createContext<FilterContextType>({
   filter: "all",
   setFilter: () => {},
-  counts: { all: 39, premium: 19, free: 20 },
+  counts: { all: 10, premium: 6, free: 4 },
 })
 
 export function useTemplateFilter() {
