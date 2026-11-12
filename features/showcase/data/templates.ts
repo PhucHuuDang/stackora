@@ -5,6 +5,38 @@ const HEADING_SPARKLE =
 
 export const TEMPLATES: Template[] = [
   {
+    id: "nove",
+    date: "2026-11-13T00:00:00.000Z",
+    dateText: "Nov 13, 2026",
+    hasPro: true,
+    title: "Nove Espresso",
+    headingSvg: HEADING_SPARKLE,
+    desc: "A premium single-product e-commerce storefront for a home espresso machine. Features a cinematic video hero, model comparison and pricing cards, rich product pages with sticky CTA, a shop with bundles, a journal with article pages, and dual light/dark themes.",
+    img: "/templates/nove-dark.webp",
+    width: 1600,
+    height: 1000,
+    liveUrl: "https://novee-tan.vercel.app/",
+    tags: ["Next.js 16", "Tailwind CSS", "Shadcn UI", "Motion", "TypeScript"],
+    features: [
+      "Cinematic video hero with floating product card",
+      "Side-by-side model comparison and pricing",
+      "Product pages with sticky add-to-bag CTA",
+      "Journal, showroom and help center pages",
+    ],
+    links: [
+      {
+        html: '<a target="_blank" rel="noopener noreferrer" href="https://novee-tan.vercel.app/">Live Demo</a>',
+        text: "Live Demo",
+        links: [
+          {
+            text: "Live Demo",
+            href: "https://novee-tan.vercel.app/",
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: "nacre",
     date: "2026-11-08T00:00:00.000Z",
     dateText: "Nov 8, 2026",

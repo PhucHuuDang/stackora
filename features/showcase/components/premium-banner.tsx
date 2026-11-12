@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useTemplateFilter } from "./filter-tabs"
 
 export const PremiumBanner = React.memo(function PremiumBanner({
-  proCount = 6,
+  proCount = 7,
 }: {
   proCount?: number
 }) {
